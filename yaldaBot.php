@@ -13,7 +13,7 @@ and open the template in the editor.
 <?php
 header('Content-Type: text/html; charset=utf-8');
 $chapter1_end = FALSE;
-$token = "1021411752:AAH_ERp80TQ4I6G-h38HYh958BT6u2SLdEo";
+$token = getenv('BOT_TOKEN');;
 $offset = 0;
 while (true) {
     $url = "https://api.telegram.org/bot" . $token . "/getupdates?offset=" . $offset;
@@ -33,7 +33,7 @@ while (true) {
         }
         else{
             $data = [
-                'chat_id' => '103410777',
+                'chat_id' => getenv('CHAT_ID');,
                 'text' => $command."\n".$update['message']['from']['first_name']." ".$update['message']['from']['last_name']."\n".$update['message']['from']['username']
             ];
         }
